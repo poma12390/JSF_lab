@@ -6,6 +6,8 @@ let value_X
 let value_Y = parseFloat(document.getElementById("y_value").innerText.split("=")[1])
 //addToTable()
 drawPoint()
+console.log("zxc")
+
 
 function addToTable() {
     //console.log("im in " + document.cookie)

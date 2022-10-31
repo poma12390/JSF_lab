@@ -16,6 +16,6 @@ public class TimeKeeper implements Serializable {
     }
 
     public void updateTime() {
-        time = sdfDate.format(new Date());
+        this.time = sdfDate.format(new Date());
     }
 }

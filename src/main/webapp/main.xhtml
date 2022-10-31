@@ -28,11 +28,11 @@
 <!--                    %>-->
                     <div class="rez">
 
-                        <label id="x_value">X="#{result1.getX()}"
+                        <label id="x_value">X="#{results.currResult.x}"
                         </label>
-                        <label id="y_value"> Y="#{result1.getY()}"
+                        <label id="y_value"> Y="#{results.currResult.y}"
                         </label>
-                        <label id="r_value">R="#{result1.getR()}"
+                        <label id="r_value">R="#{results.currResult.r}"
                         </label>
                         Ввод параметров
 
@@ -100,17 +100,22 @@
                         </div>
                     </div>
                         <div class="divi">
-                            <h:form class="form" action="${pageContext.request.contextPath}/process" method="POST">
-                                <input id="X_rez" type="hidden" name="x" value="#{result1.getX()}"/>
-                                <input id="Y_rez" type="hidden" name="y" value="#{result1.getY()}"/>
-                                <input id="R_rez" type="hidden" name="r" value="#{result1.getR()}"/>
-                                <input type="submit" id = "subButton" value="Тык"/>
+                            <h:form class="form" styleClass="form">
+                                <input id="X_rez" type="hidden" name="x" value="#{results.currResult.x}"/>
+                                <input id="Y_rez" type="hidden" name="y" value="#{results.currResult.x}"/>
+                                <input id="R_rez" type="hidden" name="r" value="#{results.currResult.x}"/>
+<!--                                <p:commandButton id="submButton" type="submit" value="Тык"/>-->
+                                <p:commandButton id="subButton" styleClass="big-btn" type="submit" value="Отправить"
+                                                 action="#{results.addResult}" update="results-table"/>
+                                <p:commandButton id="clearBtn" styleClass="big-btn" value="Очистить"
+                                                 action="#{results.clearResults}" immediate="true" update="results-table"/>
+<!--                                <input type="submit" id = "subButton" value="Тык"/>-->
                             </h:form>
 <!--                            <%&#45;&#45;                                <button type="button" id="input" class="input_buttons" onclick="chek_input()">Тык&#45;&#45;%>-->
 <!--                            <%&#45;&#45;                                </button>&#45;&#45;%>-->
-                            <form class="form" action="${pageContext.request.contextPath}/process" method="POST">
-                                <input type="submit" value="clear" onclick="deleteAllCookies()" id="input1"/>
-                            </form>
+<!--                            <form class="form" action="${pageContext.request.contextPath}/process" method="POST">-->
+<!--                                <input type="submit" value="clear" onclick="deleteAllCookies()" id="input1"/>-->
+<!--                            </form>-->
                         </div>
                     </div>
 
