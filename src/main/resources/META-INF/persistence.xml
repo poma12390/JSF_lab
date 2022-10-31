@@ -10,6 +10,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
         <class>beans.Result</class>
         <properties>
             <!-- common properties -->
+
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="hibernate.show_sql" value="true"/> <!-- Show SQL in console -->

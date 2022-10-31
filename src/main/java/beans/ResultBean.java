@@ -20,12 +20,18 @@ public class ResultBean implements Serializable {
     private ResultDao resultDao;
 
     private Result currResult;
+
+    private Float x;
+
+    private Float y;
+
+    private Float r;
     private List<Result> resultList;
 
     @PostConstruct
     private void initialize() {
         currResult = new Result();
-        //updateLocal();
+        updateLocal();
     }
 
     private void updateLocal() {

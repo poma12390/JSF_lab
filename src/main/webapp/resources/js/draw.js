@@ -71,12 +71,12 @@ document.querySelector('#canvas').addEventListener("click", function (e) {
             value_X = x_value
             document.getElementById("y_value").innerText = "Y = " + value_Y
             document.getElementById("x_value").innerText = "X = " + value_X
-            document.getElementById("X_rez").setAttribute("value", "" + x_value)
-            document.getElementById("Y_rez").setAttribute("value", "" + y_value)
-            document.getElementById("R_rez").setAttribute("value", "" + value_R)
+            document.getElementById("form:X").setAttribute("value", "" + x_value)
+            document.getElementById("form:Y").setAttribute("value", "" + y_value)
+            document.getElementById("form:R").setAttribute("value", "" + value_R)
 
             //window.alert(e.pageX +" "+ e.pageY + " " + Math.max( body.scrollHeight, body.offsetHeight,html.clientHeight, html.scrollHeight, html.offsetHeight ))
-            document.getElementById("subButton").click()
+            document.getElementById("form:submitBtn").click()
             // let http = new XMLHttpRequest();
             // let url = '/JavaEEHelloWorld_Web_exploded/process';
             // let params = 'y=';
