@@ -28,11 +28,11 @@
 <!--                    %>-->
                     <div class="rez">
 
-                        <label id="x_value">X="#{results.currResult.x}"
+                        <label id="x_value">X="#{result1.getX()}"
                         </label>
-                        <label id="y_value"> Y="#{results.currResult.y}"
+                        <label id="y_value"> Y="#{result1.getX()}"
                         </label>
-                        <label id="r_value">R="#{results.currResult.r}"
+                        <label id="r_value">R="#{result1.getX()}"
                         </label>
                         Ввод параметров
 
@@ -81,36 +81,47 @@
                         </div>
 
 
+<!--                        <div class="form__row">-->
+<!--                            <button class="form__x-btn" type="button" value="1" id="b1" name="X" onclick="set_R_value(id)">-->
+<!--                                1-->
+<!--                            </button>-->
+<!--                            <button class="form__x-btn" type="button" value="1.5" id="b1_5" name="X"-->
+<!--                                    onclick="set_R_value(id)">1.5-->
+<!--                            </button>-->
+<!--                            <button class="form__x-btn" type="button" value="2" id="b2" name="X" onclick="set_R_value(id)">-->
+<!--                                2-->
+<!--                            </button>-->
+<!--                            <button class="form__x-btn" type="button" value="2.5" id="b2_5" name="X"-->
+<!--                                    onclick="set_R_value(id)">2.5-->
+<!--                            </button>-->
+<!--                            <button class="form__x-btn" type="button" value="3" id="b3" name="X" onclick="set_R_value(id)">-->
+<!--                                3-->
+<!--                            </button>-->
+<!--                        </div>-->
                         <div class="form__row">
-                            <button class="form__x-btn" type="button" value="1" id="b1" name="X" onclick="set_R_value(id)">
-                                1
-                            </button>
-                            <button class="form__x-btn" type="button" value="1.5" id="b1_5" name="X"
-                                    onclick="set_R_value(id)">1.5
-                            </button>
-                            <button class="form__x-btn" type="button" value="2" id="b2" name="X" onclick="set_R_value(id)">
-                                2
-                            </button>
-                            <button class="form__x-btn" type="button" value="2.5" id="b2_5" name="X"
-                                    onclick="set_R_value(id)">2.5
-                            </button>
-                            <button class="form__x-btn" type="button" value="3" id="b3" name="X" onclick="set_R_value(id)">
-                                3
-                            </button>
+                            <input type="checkbox" class="form__x-btn" value="1" id="b1" name="r" onclick="set_R_value(id)"/>
+                            <input type="checkbox" class="form__x-btn" value="1.5" id="b1_5" name="r" onclick="set_R_value(id)"/>
+                            <input type="checkbox" class="form__x-btn" value="2" id="b2" name="r" onclick="set_R_value(id)"/>
+                            <input type="checkbox" class="form__x-btn" value="2.5" id="b2_5" name="r" onclick="set_R_value(id)"/>
+                            <input type="checkbox" class="form__x-btn" value="3" id="b3" name="r" onclick="set_R_value(id)"/>
                         </div>
                     </div>
                         <div class="divi">
                             <h:form class="form" styleClass="form">
-                                <input id="X_rez" type="hidden" name="x" value="#{results.currResult.x}"/>
-                                <input id="Y_rez" type="hidden" name="y" value="#{results.currResult.x}"/>
-                                <input id="R_rez" type="hidden" name="r" value="#{results.currResult.x}"/>
-<!--                                <p:commandButton id="submButton" type="submit" value="Тык"/>-->
-                                <p:commandButton id="subButton" styleClass="big-btn" type="submit" value="Отправить"
-                                                 action="#{results.addResult}" update="results-table"/>
-                                <p:commandButton id="clearBtn" styleClass="big-btn" value="Очистить"
-                                                 action="#{results.clearResults}" immediate="true" update="results-table"/>
-<!--                                <input type="submit" id = "subButton" value="Тык"/>-->
+                                <input id="X_rez" type="hidden" name="x" value="#{result1.getX()}"/>
+                                <input id="Y_rez" type="hidden" name="y" value="#{result1.getX()}"/>
+                                <input id="R_rez" type="hidden" name="r" value="#{result1.getX()}"/>
+
+                                <input type="submit" id = "subButton" value="Тык"/>
+                                <input type="submit" id = "clearButton" value="очистить"/>
+                                <div class="form__row form__btn-row">
+<!--                                    <p:commandButton id="subButton" styleClass="big-btn" type="submit" value="Отправить"-->
+<!--                                                     update="results-table"/>-->
+<!--                                    <p:commandButton id="clearBtn" styleClass="big-btn" value="Очистить"-->
+<!--                                                     immediate="true" update="results-table"/>-->
+                                </div>
                             </h:form>
+
 <!--                            <%&#45;&#45;                                <button type="button" id="input" class="input_buttons" onclick="chek_input()">Тык&#45;&#45;%>-->
 <!--                            <%&#45;&#45;                                </button>&#45;&#45;%>-->
 <!--                            <form class="form" action="${pageContext.request.contextPath}/process" method="POST">-->

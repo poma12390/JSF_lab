@@ -1,3 +1,4 @@
+let checks=document.getElementsByClassName("form__x-btn")
 
 new_r_value()
 function new_r_value() {
@@ -26,6 +27,19 @@ function new_x_value() {
     //console.log(document.getElementById("y_value").innerText.split("=")[1]+ " log")
     value_X = parseFloat(document.getElementById("x_value").innerText.split("=")[1])
     document.getElementById("X_rez").setAttribute("value", value_X )
+}
+
+function reset_check_box(id){
+    for (var i = 0; i < checks.length; i++) {
+
+        if (checks[i].id!==id){
+            console.log(checks[i].id + " ids " + id)
+            checks[i].checked =false
+        }
+        checks[i].check = false
+
+
+    }
 }
 // document.addEventListener('DOMContentLoaded', function () {
 //     var url = window.location.pathname;
@@ -71,7 +85,9 @@ function set_R_value(id){
     value_R=document.getElementById(id).getAttribute("value")
     document.getElementById("r_value").innerText = "R = " + value_R
     document.getElementById("R_rez").setAttribute("value",value_R )
+    reset_check_box(id)
     drawPoint()
+
 
 }
 
