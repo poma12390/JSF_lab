@@ -8,7 +8,7 @@
 <h:head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <h:outputStylesheet name="style.css" library="css" />
-    <title>Lab3 - Start page</title>
+    <title>Main page</title>
 </h:head>
 <h:body>
     <div class="table">
@@ -161,12 +161,12 @@
 <!--                        </thead>-->
                         <p:dataTable id="result-table" class="result-table" tableStyleClass="main__table" var="result" value="#{results.resultList}"
                                      emptyMessage="">
-                            <p:column headerText="X">
-                                <h:outputText value="#{result.x}" />
+                            <p:column headerText="X" id="X_coords">
+                                <h:outputText class="X_co" value="#{result.x}" />
                             </p:column>
 
                             <p:column headerText="Y">
-                                <h:outputText value="#{result.y}" />
+                                <h:outputText class="Y_co" value="#{result.y}" />
                             </p:column>
 
                             <p:column headerText="R">

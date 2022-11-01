@@ -33,8 +33,6 @@ function reset_check_box(id){
             console.log(checks[i].id + " ids " + id)
             checks[i].checked =false
         }
-
-
     }
 }
 
@@ -72,6 +70,7 @@ function set_R_value(id){
     document.getElementById("r_value").innerText = "R = " + value_R
     document.getElementById("form:R").setAttribute("value",value_R )
     reset_check_box(id)
+
     drawPoint()
 
 

@@ -1,53 +1,43 @@
 canvas = document.querySelector("#canvas");
 ctx = canvas.getContext("2d");
-let value_R = 0;
+let value_R = 1;
+
+
 let value_Heat=false
-createSMTH()
 let value_X = document.getElementById("form:X").value
 let value_Y= document.getElementById("form:Y").value
+let values_X=[]
+let values_Y=[]
+createSMTH()
+insert_old_dots()
 // let value_Y = parseFloat(document.getElementById("y_value").innerText.split("=")[1])
 //addToTable()
 drawPoint()
-console.log("zxc")
 
 
-function addToTable() {
-    //console.log("im in " + document.cookie)
-    let output = ""
-    let input = Cookies.get("input_data");
-    //console.log(input + " input ")
-    if (input !== undefined && input !== "") {
-        let arr_data = input.split("/");
-        for (let i = 0; i < arr_data.length - 1; i++) {
-            let mass_value = arr_data[i].split(";");
-            output += "<tr>"
-            for (let j = 1; j < mass_value.length; j++) {
-                output += "<td>"
-                output += mass_value[j];
-                output += "</td>"
-            }
-            output += "</tr>"
-        }
-        document.getElementById("rezTable").innerHTML = output
+
+function insert_old_dots(){
+    tempX=document.getElementsByClassName("X_co")
+    tempY=document.getElementsByClassName("Y_co")
+    for (let i=0; i<tempX.length; i++){
+        //window.alert(tempX[i].innerText + " " + tempY[i].innerText);
+        values_Y.push(parseFloat(tempY[i].innerText));
+        values_X.push(parseFloat(tempX[i].innerText));
+
     }
-    //document.getElementById("rezTable").innerHTML=output
-    // console.log(output + "output")
+    drawPoints()
 }
 
-function deleteAllCookies() {
-    let cookies = document.cookie.split(";");
-
-    for (let i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i];
-        let eqPos = cookie.indexOf("=");
-        let name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
-    document.location.reload()
-}
+document.getElementById("form:clearBtn").addEventListener("click", function (e) {
+    values_Y=[]
+    values_X=[]
+    createSMTH()
+})
+document.getElementById("form:clearBtn").addEventListener("click", function (e) {
+    drawPoint()
+})
 
 document.querySelector('#canvas').addEventListener("click", function (e) {
-
     if (value_R == 0) {
         window.alert("Enter R")
     } else {
@@ -78,6 +68,8 @@ document.querySelector('#canvas').addEventListener("click", function (e) {
             document.getElementById("form:R").setAttribute("value", "" + value_R)
 
             document.getElementById("form:submitBtn").click()
+            values_X.push(x_value)
+            values_Y.push(y_value)
             drawPoint()
 
         }
@@ -88,7 +80,8 @@ document.querySelector('#canvas').addEventListener("click", function (e) {
 })
 
 function drawPoint() {
-
+    createSMTH()
+    drawPoints()
     let y = value_Y
     let r = value_R
     //let x=document.getElementById("xParam").value.replace(/[,]/,".")
@@ -96,13 +89,12 @@ function drawPoint() {
 
     //console.log(x, y ,r + " draw")
     if (isNaN(x) || isNaN(y) || isNaN(r)) {
-        createSMTH()
+
     } else {
         if (x > 1.5 * r || y > 1.5 * r || x < -1.5 * r || y < -1.5 * r) {
-            createSMTH()
+
         } else {
             value_Heat = ((x>=0 && y<=0 && x*x+y*y<r*r/4) || (x>=0 && y>=0 && x<=r-2*y) || (x<=0 && y>=0 && x>=-r/2 && y<=r))
-            createSMTH()
             if (value_Heat){
                 ctx.fillStyle = "green";
             }else{
@@ -212,3 +204,26 @@ function createSMTH() {
     ctx.stroke()
 
 }
+
+function drawPoints(){
+        createSMTH()
+    for (var i = 0; i < values_X.length; i++){
+        let x=values_X[i]
+        let y=values_Y[i]
+        let r=value_R
+        ctx.beginPath();
+        let value_Heat = ((x>=0 && y<=0 && x*x+y*y<r*r/4) || (x>=0 && y>=0 && x<=r-2*y) || (x<=0 && y>=0 && x>=-r/2 && y<=r))
+        console.log(value_Heat)
+        //window.alert(x+ " " + y + " "+r)
+        if (value_Heat){
+            ctx.fillStyle = "green";
+        }else{
+            ctx.fillStyle = "red";
+        }
+        ctx.moveTo(768, 390);
+        ctx.arc(768 + 220 * x / r, 380 - 220 * y / r, 6, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath()
+    }
+}
+
