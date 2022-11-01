@@ -7,12 +7,18 @@
     <session-factory>
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <!-- property name="connection.driver_class">com.mysql.jdbc.Driver</property -->
-        <property name="connection.url">jdbc:postgresql://localhost:5432/postgres</property>
+
         <property name="dialect">org.hibernate.dialect.PostgresPlusDialect</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/postgres</property>
         <property name="connection.username">postgres</property>
         <property name="connection.password">studs</property>
+
+
+<!--        <property name="connection.url">jdbc:postgresql://pg:5432/studs</property>-->
+<!--        <property name="connection.username">s335131</property>-->
+<!--        <property name="connection.password">0tYfPGh7755rcNbs</property>-->
         <property name="connection.pool_size">3</property>
-        <!--property name="dialect">org.hibernate.dialect.MySQLDialect</property-->
+
         <property name="current_session_context_class">thread</property>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>

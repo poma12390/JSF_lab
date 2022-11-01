@@ -10,12 +10,10 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
         <class>beans.Result</class>
         <properties>
             <!-- common properties -->
-
-            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
             <property name="hibernate.show_sql" value="true"/> <!-- Show SQL in console -->
             <property name="hibernate.format_sql" value="true"/> <!-- Show SQL formatted -->
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
 
             <!-- local -->
             <property name="javax.persistence.jdbc.user" value="postgres"/>
@@ -23,9 +21,9 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
 
             <!-- helios -->
-            <!--            <property name="javax.persistence.jdbc.user" value="s335125"/>-->
-            <!--            <property name="javax.persistence.jdbc.password" value=""/>-->
-            <!--            <property name="javax.persistence.jdbc.url" value="/>-->
+<!--            <property name="javax.persistence.jdbc.user" value="s335131"/>-->
+<!--            <property name="javax.persistence.jdbc.password" value="0tYfPGh7755rcNbs"/>-->
+<!--            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://pg:5432/studs"/>-->
         </properties>
     </persistence-unit>
 </persistence>

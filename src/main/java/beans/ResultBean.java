@@ -12,9 +12,9 @@ import java.util.Locale;
 
 @Data
 public class ResultBean implements Serializable {
-    private static final int[] X_VALUES = {-5, -4, -3, -2, -1, 0, 1, 2, 3};
-    private static final double MIN_Y = -5;
-    private static final double MAX_Y = 5;
+    private static final double[] X_VALUES = {-2, -1.5, -1, -0.5, -0, 0.5, 1, 1.5, 2};
+    private static final double MIN_Y = -3;
+    private static final double MAX_Y = 3;
 
     @Inject
     private ResultDao resultDao;
@@ -23,7 +23,7 @@ public class ResultBean implements Serializable {
 
     private Float x;
 
-    private Float y;
+        private Float y;
 
     private Float r;
     private List<Result> resultList;

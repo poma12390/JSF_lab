@@ -9,15 +9,27 @@
 
     <h:head>
         <title>Lab3 - Start page</title>
+        <h:outputStylesheet name="index.css" library="css" />
+
     </h:head>
 
     <h:body>
-<!--        <meta http-equiv="refresh" content="1; URL="/>-->
-        <h1 class="main__title">Лабораторная работа #3, вариант 21</h1>
+        <div id = "main">
+            <div>
+                <h1 class="main__title">Лабораторная работа #3, вариант 1290</h1>
+            </div>
+            <!--        <meta http-equiv="refresh" content="1; URL="/>-->
 
-            <h2> Time is <span id="time"> </span></h2>
+            <div>
+                <h2> Time is <span id="time"> </span></h2>
+            </div>
 
-        <h:button outcome="main" style="width: 150px" styleClass="big-btn" value="Начать!"/>
+            <div>
+                <h:button outcome="main" style="width: 150px" styleClass="big-btn" value="Начать!"/>
+            </div>
+        </div>
+
+
         <h:outputScript name="timer.js" library="js"/>
         <ui:insert name="js"/>
     </h:body>

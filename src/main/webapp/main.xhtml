@@ -14,7 +14,7 @@
     <div class="table">
         <div class="proga">
             <div class="header">
-                <h1>Кочнев Роман P32081 Вариант 4621
+                <h1>Кочнев Роман P32081 Вариант 1290
                 </h1>
             </div>
             <div class="main-table">
@@ -110,18 +110,25 @@
                         <div class="divi">
                             <h:form class="form" styleClass="form" id = "form">
                                 <h:inputHidden id="X" name="x" value="#{results.currResult.x}">
+                                    <f:validator validatorId="validatorX"/>
                                 </h:inputHidden>
                                 <h:inputHidden id="Y" name="y" value="#{results.currResult.y}">
+                                    <f:validator validatorId="validatorY"/>
                                 </h:inputHidden>
-                                <h:inputHidden id="R" name="r" value="#{results.currResult.r}">
+                                <h:inputHidden id="R" name="r"  value="#{results.currResult.r}">
+                                    <f:validator validatorId="validatorR"/>
                                 </h:inputHidden>
+
 
 <!--                                <input id="X_rez" type="hidden" name="x" value="#{results.x}"/>-->
 <!--                                <input id="Y_rez" type="hidden" name="y" value="#{results.y}"/>-->
 <!--                                <input id="R_rez" type="hidden" name="r" value="#{results.r}"/>-->
 
                                 <p:commandButton id="submitBtn" styleClass="big-btn" type="submit" value="Отправить"
-                                                 action="#{results.addResult}" update="results-table"/>
+                                                 action="#{results.addResult}" update="result-table"/>
+                                <p:commandButton id="clearBtn" styleClass="big-btn" value="Очистить"
+                                                 action="#{results.clearResults}" immediate="true" update="result-table"/>
+                                <h:button outcome="index" style="width: 150px" styleClass="big-btn" value="Вернуться!"/>
 <!--                                <input type="submit" id = "clearButton" value="очистить"/>-->
                                 <div class="form__row form__btn-row">
 <!--                                    <p:commandButton id="subButton" styleClass="big-btn" type="submit" value="Отправить"-->
@@ -152,7 +159,7 @@
 <!--                            <th>Hit detect</th>-->
 <!--                        </tr>-->
 <!--                        </thead>-->
-                        <p:dataTable id="results-table" tableStyleClass="main__table" var="result" value="#{results.resultList}"
+                        <p:dataTable id="result-table" class="result-table" tableStyleClass="main__table" var="result" value="#{results.resultList}"
                                      emptyMessage="">
                             <p:column headerText="X">
                                 <h:outputText value="#{result.x}" />

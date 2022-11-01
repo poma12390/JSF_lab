@@ -1,9 +1,11 @@
 canvas = document.querySelector("#canvas");
 ctx = canvas.getContext("2d");
 let value_R = 0;
+let value_Heat=false
 createSMTH()
-let value_X
-let value_Y = parseFloat(document.getElementById("y_value").innerText.split("=")[1])
+let value_X = document.getElementById("form:X").value
+let value_Y= document.getElementById("form:Y").value
+// let value_Y = parseFloat(document.getElementById("y_value").innerText.split("=")[1])
 //addToTable()
 drawPoint()
 console.log("zxc")
@@ -75,23 +77,9 @@ document.querySelector('#canvas').addEventListener("click", function (e) {
             document.getElementById("form:Y").setAttribute("value", "" + y_value)
             document.getElementById("form:R").setAttribute("value", "" + value_R)
 
-            //window.alert(e.pageX +" "+ e.pageY + " " + Math.max( body.scrollHeight, body.offsetHeight,html.clientHeight, html.scrollHeight, html.offsetHeight ))
             document.getElementById("form:submitBtn").click()
-            // let http = new XMLHttpRequest();
-            // let url = '/JavaEEHelloWorld_Web_exploded/process';
-            // let params = 'y=';
-            // params=params+Math.round(x_value * 100) / 100
-            // params=params+'&x='
-            // params=params+Math.round(y_value * 100) / 100
-            // params=params+'&r='
-            // params=params+value_R
-            //
-            // http.open('POST', url, true);
-            //
-            // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            drawPoint()
 
-            //http.send(params);
-            //document.location.reload()
         }
 
     }
@@ -105,16 +93,22 @@ function drawPoint() {
     let r = value_R
     //let x=document.getElementById("xParam").value.replace(/[,]/,".")
     let x = value_X
+
     //console.log(x, y ,r + " draw")
-    if (!isNaN(x) || !isNaN(y) || !isNaN(r)) {
+    if (isNaN(x) || isNaN(y) || isNaN(r)) {
         createSMTH()
     } else {
-
         if (x > 1.5 * r || y > 1.5 * r || x < -1.5 * r || y < -1.5 * r) {
             createSMTH()
         } else {
+            value_Heat = ((x>=0 && y<=0 && x*x+y*y<r*r/4) || (x>=0 && y>=0 && x<=r-2*y) || (x<=0 && y>=0 && x>=-r/2 && y<=r))
             createSMTH()
-            ctx.fillStyle = "red";
+            if (value_Heat){
+                ctx.fillStyle = "green";
+            }else{
+                ctx.fillStyle = "red";
+            }
+
             ctx.beginPath();
             ctx.moveTo(768, 390);
             ctx.arc(768 + 220 * x / r, 380 - 220 * y / r, 6, 0, 2 * Math.PI);
@@ -144,7 +138,9 @@ function createSMTH() {
     ctx.moveTo(1148, 380);
     ctx.lineTo(1118, 402); //стрелочки
 
-
+    if (isNaN(value_R)){
+        value_R=0
+    }
     ctx.font = "30px Arial";
     ctx.moveTo(790, 160);
     ctx.lineTo(746, 160);
@@ -196,12 +192,10 @@ function createSMTH() {
     ctx.strokeStyle = "rgba(91,95,201,0.54)"
 
     ctx.beginPath();
-    // ctx.arc(769, 381, 110, 0.5*Math.PI, 0 , true); //сектор круга
-    ctx.fillRect(768, 380, 220, 110) //прямоугольник
-    // ctx.arc(769, 381, 110, 0.5*Math.PI, 0 , true); //сектор круга
+    ctx.fillRect(768, 380, -110, -220) //прямоугольник
     ctx.moveTo(768, 380);//треугольник
-    ctx.lineTo(658, 380)
-    ctx.lineTo(768, 600)
+    ctx.lineTo(988, 380)
+    ctx.lineTo(768, 270 )
 
 
     ctx.closePath()
@@ -211,7 +205,7 @@ function createSMTH() {
     ctx.moveTo(768, 380);
     ctx.lineTo(768, 600);
     ctx.moveTo(768, 380);
-    ctx.arc(768, 380, 220, 0, -0.5 * Math.PI, true);
+    ctx.arc(768, 380, 110, -1.5 * Math.PI, -2 * Math.PI, true);
     ctx.closePath()
     ctx.fill()
 

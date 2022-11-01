@@ -32,10 +32,7 @@ public class Result implements Serializable {
     }
 
     private boolean checkHit() {
-        boolean circle = (x <= 0) && (y >= 0) && (x * x + y * y <= (r / 2) * (r / 2));
-        boolean triangle = (x >= 0) && (y >= 0) && (y <= r - 2 * x);
-        boolean rectangle = (x >= 0) && (y <= 0) && (x <= r) && (y >= -r / 2);
-        return circle || triangle || rectangle;
+        return ((x>=0 && y<=0 && x*x+y*y<r*r/4) || (x>=0 && y>=0 && x<=r-2*y) || (x<=0 && y>=0 && x>=-r/2 && y<=r));
     }
 
     public String getStringSuccess() {

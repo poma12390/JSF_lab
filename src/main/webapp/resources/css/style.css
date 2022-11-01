@@ -16,18 +16,18 @@
 
 
 body {
-    background-image: url("/resources/space.jpg");
+    background-image: url("https://rg.ru/uploads/images/187/13/91/iStock-1012400706_d_850.jpg");
     background-size: 100%;
 }
 
 table {
-
 
     table-layout: fixed;
     margin-bottom: 2%;
     background-color: #F39C12;
     width: auto;
 }
+
 
 th {
     font-weight: bold;
@@ -64,12 +64,17 @@ div {
     text-align: center;
 }
 
+table{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
 
 .table {
     display: flex;
     flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
 }
 
 .proga {
@@ -79,6 +84,7 @@ div {
 [data-tooltip]:active {
     content: attr(data-tooltip); /* Выводим текст */
 }
+
 
 [type='button']:not([name='X']) {
     display: flex;
@@ -91,10 +97,16 @@ div {
     transform: rotate(-2deg);
 }
 
+table{
+
+}
 .main-table {
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: column;
     gap: 10px;
+
     background-color: #FFDEAD;
 
 }
@@ -133,8 +145,11 @@ div > #canvas {
     flex-direction: row;
     width: 550px;
     margin-left: auto;
-    margin-right: 100px;
+    margin-right: auto;
 
+}
+.ui-button{
+    text-align: left;
 }
 
 /* ToolTip classses */
@@ -173,4 +188,10 @@ div > #canvas {
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+}
+.result-table{
+
+    width: auto;
+    border-bottom: 500px;
+
 }
