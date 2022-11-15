@@ -1,6 +1,9 @@
 package database;
 
 import beans.Result;
+import utils.HibernateSessionFactoryUtil;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -13,6 +16,7 @@ public class ResultDaoImplementation implements ResultDao {
 
     @Override
     public void save(Result result) {
+
         EntityTransaction transaction = entityManager.getTransaction();
 
         try {
@@ -39,8 +43,15 @@ public class ResultDaoImplementation implements ResultDao {
         }
     }
 
+    @Override
     public List<Result> getAll() {
-        return entityManager.createQuery("select result from Result result ORDER BY id", Result.class).getResultList();
+        EntityTransaction transaction = entityManager.getTransaction();
+        List<Result> list;
+        transaction.begin();
+        list = entityManager.createQuery("select result from Result result ORDER BY id", Result.class).getResultList();
+        transaction.commit();
+
+        return list;
     }
 
 

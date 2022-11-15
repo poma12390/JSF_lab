@@ -65,12 +65,10 @@ document.querySelector('#yParam').addEventListener('input', function (e) {
 
 
 function set_R_value(id){
-
     value_R=document.getElementById(id).getAttribute("value")
     document.getElementById("r_value").innerText = "R = " + value_R
     document.getElementById("form:R").setAttribute("value",value_R )
     reset_check_box(id)
-
     drawPoint()
 
 

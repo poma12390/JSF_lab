@@ -1,15 +1,14 @@
 canvas = document.querySelector("#canvas");
 ctx = canvas.getContext("2d");
 let value_R = 1;
-
-
+let windowWidth=window.innerWidth
+let windowHeight=window.innerHeight
 let value_Heat=false
 let value_X = document.getElementById("form:X").value
 let value_Y= document.getElementById("form:Y").value
 let values_X=[]
 let values_Y=[]
 createSMTH()
-insert_old_dots()
 // let value_Y = parseFloat(document.getElementById("y_value").innerText.split("=")[1])
 //addToTable()
 drawPoint()
@@ -25,17 +24,15 @@ function insert_old_dots(){
         values_X.push(parseFloat(tempX[i].innerText));
 
     }
-    drawPoints()
 }
 
 document.getElementById("form:clearBtn").addEventListener("click", function (e) {
+    //window.alert    (canvas.offsetLeft + canvas.clientLeft + " " + canvas.offsetTop + canvas.clientTop)
     values_Y=[]
     values_X=[]
     createSMTH()
 })
-document.getElementById("form:clearBtn").addEventListener("click", function (e) {
-    drawPoint()
-})
+
 
 document.querySelector('#canvas').addEventListener("click", function (e) {
     if (value_R == 0) {
@@ -43,7 +40,7 @@ document.querySelector('#canvas').addEventListener("click", function (e) {
     } else {
         let MouX=e.clientX
 
-        // window.alert(e.clientX + " " + e.clientY)
+        window.alert(e.clientX + " " + e.clientY)
         let moveX = e.pageX - 768
         let moveY = 240 - e.pageY
         //console.log(moveX, moveY)
@@ -80,7 +77,8 @@ document.querySelector('#canvas').addEventListener("click", function (e) {
 })
 
 function drawPoint() {
-    createSMTH()
+
+    insert_old_dots()
     drawPoints()
     let y = value_Y
     let r = value_R
@@ -102,14 +100,15 @@ function drawPoint() {
             }
 
             ctx.beginPath();
-            ctx.moveTo(768, 390);
-            ctx.arc(768 + 220 * x / r, 380 - 220 * y / r, 6, 0, 2 * Math.PI);
+            ctx.moveTo(windowWidth/2, 390);
+            ctx.arc(windowWidth/2 + 220 * x / r, 380 - 220 * y / r, 6, 0, 2 * Math.PI);
             ctx.fill();
             ctx.closePath()
         }
     }
 }
-
+//Just draw new canvas
+//TODO draw with screen size
 function createSMTH() {
 
     ctx.canvas.width = window.innerWidth;
@@ -213,7 +212,6 @@ function drawPoints(){
         let r=value_R
         ctx.beginPath();
         let value_Heat = ((x>=0 && y<=0 && x*x+y*y<r*r/4) || (x>=0 && y>=0 && x<=r-2*y) || (x<=0 && y>=0 && x>=-r/2 && y<=r))
-        console.log(value_Heat)
         //window.alert(x+ " " + y + " "+r)
         if (value_Heat){
             ctx.fillStyle = "green";
